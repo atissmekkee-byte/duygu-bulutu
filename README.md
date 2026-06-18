@@ -4,7 +4,7 @@ Google Meet, sunum veya projeksiyon sırasında katılımcıların telefonların
 
 ## Dosyalar
 
-- `participant.html`: Katılımcıların telefondan kelime göndereceği sayfa.
+- `participant.html`: Katılımcıların telefondan duygu seçip göndereceği sayfa.
 - `screen.html`: Sunum ekranında bulutların akacağı sayfa.
 - `style.css`: Ortak tasarım ve animasyonlar.
 - `app.js`: Gönderme, dinleme, bulut oluşturma, küfür filtresi ve emoji eşleştirme.
@@ -120,7 +120,8 @@ Yeni eşleştirmeler ekleyebilirsiniz:
 ## Kullanım Notları
 
 - Katılımcı adı sorulmaz; gönderimler anonimdir.
-- Her gönderi en fazla 30 karakterdir.
-- Gönderimden sonra metin kutusu temizlenir.
-- `screen.html` açıkken gelen yeni kelimeler anında bulut olarak görünür.
+- Katılımcılar yazı yazmak yerine hazır duygu seçeneklerinden birine dokunur.
+- Her gönderi en fazla 30 karakter olacak şekilde korunur.
+- `screen.html` açıkken gelen yeni duygular anında bulut olarak görünür.
+- En çok seçilen duygu daha büyük, sonraki duygular kademeli daha küçük görünür.
 - Bulutlar sağdan girer, soldan çıkar ve yaklaşık 45 saniye sonra temizlenir.

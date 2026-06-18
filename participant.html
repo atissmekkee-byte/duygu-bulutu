@@ -6,32 +6,27 @@
   <title>Duygu Bulutu - Katılımcı</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="participant-page">
   <main class="participant-shell">
     <section class="participant-panel" aria-labelledby="participant-title">
       <p class="eyebrow">Anonim katılım</p>
-      <h1 id="participant-title">Bir duygu ya da kelime gönder</h1>
-      <form id="wordForm" class="send-form" autocomplete="off">
-        <label class="sr-only" for="wordInput">Duygu veya kisa kelime</label>
-        <input
-          id="wordInput"
-          name="word"
-          type="text"
-          maxlength="30"
-          placeholder="Örnek: Umut"
-          inputmode="text"
-          required
-          aria-describedby="formMessage charCounter"
-        >
-        <div class="input-meta">
-          <span id="charCounter">0/30</span>
-          <span id="formMessage" role="status" aria-live="polite"></span>
-        </div>
-        <button type="submit">Gönder</button>
-      </form>
+      <h1 id="participant-title">Bugün hangi duygu sana yakın?</h1>
+
+      <div id="emotionGrid" class="emotion-grid" aria-label="Duygu seçenekleri">
+        <button type="button" class="emotion-option" data-emotion="Kaygı" data-emoji="😟">😟 <span>Kaygı</span></button>
+        <button type="button" class="emotion-option" data-emotion="Umut" data-emoji="🌱">🌱 <span>Umut</span></button>
+        <button type="button" class="emotion-option" data-emotion="Şükür" data-emoji="🤲">🤲 <span>Şükür</span></button>
+        <button type="button" class="emotion-option" data-emotion="Özlem" data-emoji="🌙">🌙 <span>Özlem</span></button>
+        <button type="button" class="emotion-option" data-emotion="Sevinç" data-emoji="✨">✨ <span>Sevinç</span></button>
+        <button type="button" class="emotion-option" data-emotion="Huzur" data-emoji="🕊️">🕊️ <span>Huzur</span></button>
+        <button type="button" class="emotion-option" data-emotion="Heyecan" data-emoji="⚡">⚡ <span>Heyecan</span></button>
+        <button type="button" class="emotion-option" data-emotion="Yalnızlık" data-emoji="💙">💙 <span>Yalnızlık</span></button>
+      </div>
+
+      <p id="formMessage" class="participant-message" role="status" aria-live="polite"></p>
     </section>
   </main>
 

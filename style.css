@@ -79,67 +79,67 @@ input {
   letter-spacing: 0;
 }
 
-.send-form {
+.emotion-grid {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.send-form input {
-  width: 100%;
-  min-height: 58px;
-  padding: 0 16px;
-  border: 1px solid rgba(24, 48, 71, 0.18);
-  border-radius: 8px;
-  outline: none;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
-}
-
-.send-form input:focus {
-  border-color: rgba(36, 92, 115, 0.72);
-  box-shadow: 0 0 0 4px rgba(36, 92, 115, 0.12);
-}
-
-.input-meta {
-  min-height: 22px;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 0.88rem;
-}
-
-#formMessage {
-  text-align: right;
-}
-
-.send-form button,
+.emotion-option,
 .screen-corner button {
   border: 0;
   border-radius: 8px;
-  color: #ffffff;
-  background: var(--button);
   cursor: pointer;
   font-weight: 800;
-  transition: transform 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
-.send-form button {
-  min-height: 56px;
-  padding: 0 18px;
+.emotion-option {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(24, 48, 71, 0.12);
+  box-shadow: 0 10px 24px rgba(42, 74, 92, 0.08);
   font-size: 1.05rem;
 }
 
-.send-form button:hover,
+.emotion-option:hover {
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 34px rgba(42, 74, 92, 0.13);
+  transform: translateY(-1px);
+}
+
+.emotion-option:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.participant-message {
+  min-height: 24px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-align: center;
+}
+
 .screen-corner button:hover {
   background: var(--button-hover);
 }
 
-.send-form button:active,
+.emotion-option:active,
 .screen-corner button:active {
   transform: translateY(1px);
+}
+
+.screen-corner button {
+  color: #ffffff;
+  background: var(--button);
 }
 
 .screen-page {
@@ -204,21 +204,142 @@ input {
   overflow: hidden;
 }
 
+.weather-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.weather-rain,
+.weather-sun,
+.weather-warm,
+.weather-moon,
+.weather-spark,
+.weather-flash,
+.weather-calm {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.weather-rain {
+  background: linear-gradient(180deg, rgba(78, 116, 142, 0.16), transparent 72%);
+  animation: weatherFade 5.6s ease forwards;
+}
+
+.weather-rain span {
+  position: absolute;
+  top: -12vh;
+  width: 2px;
+  height: 9vh;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(83, 136, 166, 0.62));
+  animation: rainFall 2.4s linear infinite;
+}
+
+.weather-sun,
+.weather-warm,
+.weather-moon,
+.weather-calm {
+  animation: weatherFade 5.2s ease forwards;
+}
+
+.weather-sun {
+  background: radial-gradient(circle at 82% 18%, rgba(255, 232, 128, 0.64), rgba(255, 232, 128, 0.18) 22%, transparent 48%);
+}
+
+.weather-warm {
+  background: radial-gradient(circle at 50% 42%, rgba(255, 218, 156, 0.36), transparent 52%);
+}
+
+.weather-moon {
+  background: radial-gradient(circle at 18% 20%, rgba(229, 238, 255, 0.42), rgba(229, 238, 255, 0.12) 20%, transparent 44%);
+}
+
+.weather-calm {
+  background: radial-gradient(circle at 58% 28%, rgba(255, 255, 255, 0.24), transparent 42%);
+}
+
+.weather-sun span,
+.weather-warm span,
+.weather-moon span,
+.weather-spark span,
+.weather-flash span,
+.weather-calm span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatSpark 3.6s ease forwards;
+}
+
+.weather-sun span {
+  background: rgba(255, 219, 91, 0.84);
+  box-shadow: 0 0 24px rgba(255, 219, 91, 0.72);
+}
+
+.weather-warm span {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 190, 126, 0.72);
+  box-shadow: 0 0 28px rgba(255, 190, 126, 0.58);
+}
+
+.weather-moon span {
+  width: 8px;
+  height: 8px;
+  background: rgba(238, 244, 255, 0.86);
+  box-shadow: 0 0 20px rgba(238, 244, 255, 0.68);
+}
+
+.weather-spark span {
+  width: 9px;
+  height: 9px;
+  background: rgba(255, 247, 171, 0.92);
+  box-shadow: 0 0 20px rgba(255, 204, 92, 0.66);
+  animation-duration: 3.2s;
+}
+
+.weather-flash {
+  animation: flashFade 2.6s ease forwards;
+}
+
+.weather-flash span {
+  width: 4px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(255, 243, 156, 0.88);
+  box-shadow: 0 0 24px rgba(255, 243, 156, 0.72);
+  transform: rotate(24deg);
+  animation-duration: 2.3s;
+}
+
+.weather-calm span {
+  width: 14px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
+  animation-duration: 4s;
+}
+
 .cloud {
   --duration: 45s;
   --scale: 1;
   position: absolute;
   left: 100vw;
   top: var(--top);
-  min-width: 180px;
-  max-width: min(380px, 78vw);
-  min-height: 92px;
+  min-width: 218px;
+  max-width: min(430px, 80vw);
+  min-height: 118px;
   display: grid;
   place-items: center;
-  padding: 24px 38px;
+  padding: 30px 48px;
   color: #173047;
   text-align: center;
-  font-size: clamp(1.25rem, 2.4vw, 2.1rem);
+  font-size: clamp(1.55rem, 2.9vw, 2.65rem);
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: 0;
@@ -236,26 +357,30 @@ input {
 }
 
 .cloud::before {
-  inset: 22px 12px 12px;
+  inset: 30px 14px 14px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff 0%, #f4fbfd 100%);
+  background:
+    radial-gradient(circle at 38% 14%, rgba(255, 255, 255, 0.96), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f2fbfd 100%);
   box-shadow:
-    -44px 6px 0 -4px #ffffff,
-    42px 8px 0 -6px #ffffff,
+    -54px 8px 0 -8px #ffffff,
+    54px 10px 0 -10px #ffffff,
+    112px 18px 0 -26px #ffffff,
     0 15px 18px rgba(103, 146, 162, 0.08) inset;
 }
 
 .cloud::after {
-  width: 74px;
-  height: 74px;
-  left: 34px;
-  top: 2px;
+  width: 84px;
+  height: 84px;
+  left: 38px;
+  top: 6px;
   border-radius: 50%;
   background: #ffffff;
   box-shadow:
-    58px -14px 0 12px #ffffff,
-    128px 0 0 4px #ffffff,
-    192px 18px 0 -8px #ffffff;
+    64px -20px 0 16px #ffffff,
+    142px -2px 0 8px #ffffff,
+    214px 24px 0 -8px #ffffff,
+    26px 38px 0 12px #ffffff;
 }
 
 .cloud-text {
@@ -293,6 +418,61 @@ input {
   }
   to {
     transform: translateX(calc(-100vw - 460px)) scale(var(--scale));
+  }
+}
+
+@keyframes rainFall {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(118vh) translateX(-34px);
+    opacity: 0;
+  }
+}
+
+@keyframes floatSpark {
+  from {
+    transform: translateY(18px) scale(0.74);
+    opacity: 0;
+  }
+  24% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-52px) scale(1.12);
+    opacity: 0;
+  }
+}
+
+@keyframes weatherFade {
+  from {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes flashFade {
+  from {
+    opacity: 0;
+    background: rgba(255, 247, 196, 0);
+  }
+  18% {
+    opacity: 1;
+    background: rgba(255, 247, 196, 0.28);
+  }
+  to {
+    opacity: 0;
+    background: rgba(255, 247, 196, 0);
   }
 }
 
