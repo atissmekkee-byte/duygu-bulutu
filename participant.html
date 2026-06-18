@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duygu Bulutu - Katılımcı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="participant-page">
+  <main class="participant-shell">
+    <section class="participant-panel" aria-labelledby="participant-title">
+      <p class="eyebrow">Anonim katılım</p>
+      <h1 id="participant-title">Bir duygu ya da kelime gönder</h1>
+      <form id="wordForm" class="send-form" autocomplete="off">
+        <label class="sr-only" for="wordInput">Duygu veya kisa kelime</label>
+        <input
+          id="wordInput"
+          name="word"
+          type="text"
+          maxlength="30"
+          placeholder="Örnek: Umut"
+          inputmode="text"
+          required
+          aria-describedby="formMessage charCounter"
+        >
+        <div class="input-meta">
+          <span id="charCounter">0/30</span>
+          <span id="formMessage" role="status" aria-live="polite"></span>
+        </div>
+        <button type="submit">Gönder</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

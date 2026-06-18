@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duygu Bulutu - Ekran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="screen-page">
+  <main class="sky-stage" aria-label="Duygu bulutlari ekrani">
+    <div class="sky-gradient"></div>
+    <div class="sun-glow" aria-hidden="true"></div>
+    <div class="horizon haze-one" aria-hidden="true"></div>
+    <div class="horizon haze-two" aria-hidden="true"></div>
+    <div id="cloudLayer" class="cloud-layer" aria-live="polite"></div>
+    <div class="screen-corner">
+      <span>Duygu Bulutu</span>
+      <button id="fullscreenButton" type="button">Tam ekran</button>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
